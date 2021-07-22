@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Player</title>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="VideoJs-M3U8/video-js/video-js.css" rel="stylesheet">
+    <script src="VideoJs-M3U8/video-js/video.js"></script>
+    <script src="VideoJs-M3U8/video-js/videojs-contrib-hls.min.js"></script>
+    <script>
+        videojs.options.flash.swf = "video-js/video-js.swf"
+    </script>
+    <script src="../vue.js"></script>
+    <script>
+        window.onload=function () {
+            const app=new Vue({
+                el:"#app",
+                data:{
+
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="app">
+    <center>
+        <video id="live-stream" class="video-js vjs-default-skin vjs-big-play-centered"
+               controls autoplay preload="auto"
+               poster="VideoJs-M3U8/videodemo.png"
+               data-setup='{"example_option":true}'>
+            <source src="https://v1.szjal.cn/20190729/9prTFdPV/index.m3u8" type="application/x-mpegURL" >
+        </video>
+    </center>
+
+</div>
+
+<script>
+    var options = {
+        width: 1080,
+        height: 520
+    }
+    var player = videojs('live-stream', options);
+
+    player.on(['loadstart', 'play', 'playing', 'firstplay', 'pause', 'ended', 'adplay', 'adplaying', 'adfirstplay', 'adpause', 'adended', 'contentplay', 'contentplaying', 'contentfirstplay', 'contentpause', 'contentended', 'contentupdate'], function (e) {
+        console.warn('VIDEOJS player event: ', e.type);
+    });
+</script>
+</body>
+</html>
+
