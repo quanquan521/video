@@ -22,7 +22,6 @@ public class VideoController {
         for (Video i :l){
             model.addAttribute("videoDetail",i);
             System.out.print(i.getUrl());
-
         }
         return "video";
     }
